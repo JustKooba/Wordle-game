@@ -13,4 +13,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+</style>
