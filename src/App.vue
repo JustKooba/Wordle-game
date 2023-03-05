@@ -1,17 +1,17 @@
 <template>
   <div>
     <header-main />
-    <board />
+    <playfield />
   </div>
 </template>
 
 <script>
 import HeaderMain from "./components/Header/Header.vue";
-import board from "./components/board/Board.vue";
+import Playfield from "./components/Playfield/Playfield.vue";
 export default {
   components: {
     HeaderMain,
-    board,
+    Playfield,
   },
 };
 </script>
