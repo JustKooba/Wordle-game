@@ -21,7 +21,7 @@ Features
 This project was created using the following technologies:
 - Vue
 # Credits
-This project was inspired by the official Wordle game website. All rights reserved to the original creators.
+This project was inspired by the official [Wordle game website.](https://www.nytimes.com/games/wordle/index.html) All rights reserved to the original creators.
 
 ## License
 This project is licensed under the MIT License. You can read more about the license in the LICENSE file in this repository.
