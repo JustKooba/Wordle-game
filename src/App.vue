@@ -1,14 +1,17 @@
 <template>
   <div>
     <header-main />
+    <board />
   </div>
 </template>
 
 <script>
 import HeaderMain from "./components/Header/Header.vue";
+import board from "./components/board/Board.vue";
 export default {
   components: {
     HeaderMain,
+    board,
   },
 };
 </script>
