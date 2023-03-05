@@ -1,9 +1,16 @@
 <template>
-  <div></div>
+  <div>
+    <header-main />
+  </div>
 </template>
 
 <script>
-export default {};
+import HeaderMain from "./components/Header/Header.vue";
+export default {
+  components: {
+    HeaderMain,
+  },
+};
 </script>
 
 <style></style>
