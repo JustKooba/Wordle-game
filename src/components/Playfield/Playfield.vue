@@ -32,32 +32,32 @@
     <div class="square"></div>
   </div>
   <div class="keyboard">
-    <div class="key">A</div>
-    <div class="key">B</div>
-    <div class="key">C</div>
-    <div class="key">D</div>
-    <div class="key">E</div>
-    <div class="key">F</div>
-    <div class="key">G</div>
-    <div class="key">H</div>
-    <div class="key">I</div>
-    <div class="key">J</div>
-    <div class="key">K</div>
-    <div class="key">L</div>
-    <div class="key">M</div>
-    <div class="key">N</div>
-    <div class="key">O</div>
-    <div class="key">P</div>
-    <div class="key">Q</div>
-    <div class="key">R</div>
-    <div class="key">S</div>
-    <div class="key">T</div>
-    <div class="key">U</div>
-    <div class="key">V</div>
-    <div class="key">W</div>
-    <div class="key">X</div>
-    <div class="key">Y</div>
-    <div class="key">Z</div>
+    <div class="key" @click="keyPress">A</div>
+    <div class="key" @click="keyPress">B</div>
+    <div class="key" @click="keyPress">C</div>
+    <div class="key" @click="keyPress">D</div>
+    <div class="key" @click="keyPress">E</div>
+    <div class="key" @click="keyPress">F</div>
+    <div class="key" @click="keyPress">G</div>
+    <div class="key" @click="keyPress">H</div>
+    <div class="key" @click="keyPress">I</div>
+    <div class="key" @click="keyPress">J</div>
+    <div class="key" @click="keyPress">K</div>
+    <div class="key" @click="keyPress">L</div>
+    <div class="key" @click="keyPress">M</div>
+    <div class="key" @click="keyPress">N</div>
+    <div class="key" @click="keyPress">O</div>
+    <div class="key" @click="keyPress">P</div>
+    <div class="key" @click="keyPress">Q</div>
+    <div class="key" @click="keyPress">R</div>
+    <div class="key" @click="keyPress">S</div>
+    <div class="key" @click="keyPress">T</div>
+    <div class="key" @click="keyPress">U</div>
+    <div class="key" @click="keyPress">V</div>
+    <div class="key" @click="keyPress">W</div>
+    <div class="key" @click="keyPress">X</div>
+    <div class="key" @click="keyPress">Y</div>
+    <div class="key" @click="keyPress">Z</div>
     <div class="key">BACK</div>
     <div class="key">ENTER</div>
   </div>
@@ -66,6 +66,17 @@
 <script>
 export default {
   name: "Board",
+  data() {
+    return {
+      key: "",
+    };
+  },
+  methods: {
+    keyPress() {
+      this.key = event.target.innerText;
+      console.log("key pressed: " + this.key);
+    },
+  },
 };
 </script>
 

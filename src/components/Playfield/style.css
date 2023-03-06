@@ -38,3 +38,8 @@
   align-items: center;
   cursor: pointer;
 }
+
+.key:hover {
+  transition: ease-in-out 0.3s;
+  transform: scale(1.2);
+}
