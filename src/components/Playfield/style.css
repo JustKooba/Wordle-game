@@ -8,6 +8,9 @@
   width: 70px;
   border: 1px solid var(--incorrect);
   height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .board {
