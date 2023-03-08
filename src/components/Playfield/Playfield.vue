@@ -8,14 +8,15 @@
     ></div>
   </div>
   <div class="keyboard">
-    <div
+    <button
       class="key"
       v-for="letter in alphabet"
       :key="letter"
       @click="keyPress(letter)"
+      :disabled="buttonsDisabled"
     >
       {{ letter }}
-    </div>
+    </button>
     <div class="key" @click="funcKeys">BACK</div>
     <div class="key disabled">ENTER</div>
   </div>
@@ -27,21 +28,33 @@ export default {
       squares: Array(30).fill(""),
       position: 0,
       alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      buttonsDisabled: false,
     };
   },
   methods: {
     keyPress(letter) {
       console.log("key pressed: " + letter);
+      console.log("position: " + this.position);
       if (this.position < 30) {
         this.squares[this.position] = letter;
         this.position++;
         this.currentLetter = this.squares[this.position];
       }
+
+      if (
+        this.position === 5 ||
+        this.position === 10 ||
+        this.position === 15 ||
+        this.position === 20 ||
+        this.position === 25
+      ) {
+        this.buttonsDisabled = true;
+      }
     },
     funcKeys() {
       if (event.target.innerText == "BACK") {
-        this.squares[this.position] = "";
         this.position--;
+        this.squares[this.position] = "";
       }
     },
   },
