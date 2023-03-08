@@ -22,6 +22,8 @@
   </div>
 </template>
 <script>
+import words from "../dataComponents/words.json";
+const wordList = words.map((word) => word.toUpperCase());
 export default {
   data() {
     return {
@@ -29,6 +31,8 @@ export default {
       position: 0,
       alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
       buttonsDisabled: false,
+      wordList: wordList,
+      Word: "",
     };
   },
   methods: {
@@ -49,8 +53,25 @@ export default {
         this.position === 25
       ) {
         this.buttonsDisabled = true;
+        this.checkWord();
       }
     },
+
+    checkWord() {
+      this.Word = this.squares.slice(0, 5).join("");
+      console.log(this.Word);
+
+      if (this.wordList.includes(this.Word.trim().toUpperCase())) {
+        console.log("Word is in the list");
+      } else {
+        console.log("Word is not in the list");
+      }
+
+      setTimeout(() => {
+        this.buttonsDisabled = false;
+      }, 1000);
+    },
+
     funcKeys() {
       if (event.target.innerText == "BACK") {
         this.position--;
