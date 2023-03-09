@@ -17,15 +17,13 @@
     >
       {{ letter }}
     </button>
-    <div
-      class="key"
-      @click="funcKeys"
-      :disabled="funcKeysEnabled && !BackspaceEnabled"
-    >
+    <button class="key" @click="funcKeys" :disabled="funcKeysDisabled">
       BACK
-    </div>
+    </button>
 
-    <div class="key" @click="funcKeys" :disabled="funcKeysEnabled">ENTER</div>
+    <button class="key" @click="funcKeys" :disabled="funcKeysDisabled">
+      ENTER
+    </button>
   </div>
 </template>
 <script>
@@ -40,8 +38,7 @@ export default {
       buttonsDisabled: false,
       wordList: wordList,
       Word: "",
-      funcKeysEnabled: true,
-      BackspaceEnabled: false,
+      funcKeysDisabled: false,
     };
   },
   methods: {
@@ -75,11 +72,9 @@ export default {
         this.position === 21 ||
         this.position === 26
       ) {
-        this.BackspaceEnabled = false;
-      } else if (this.position > 0) {
-        this.BackspaceEnabled = true;
+        this.funcKeysDisabled = true;
       } else {
-        this.BackspaceEnabled = false;
+        this.funcKeysDisabled = false;
       }
     },
 
@@ -105,6 +100,8 @@ export default {
         this.position--;
         this.squares[this.position] = "";
         this.buttonsDisabled = false;
+        this.funcKeysEnabled = false;
+        console.log(this.position);
       } else if (event.target.innerText == "ENTER") {
         this.checkWord();
       }
