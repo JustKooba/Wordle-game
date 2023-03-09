@@ -17,8 +17,15 @@
     >
       {{ letter }}
     </button>
-    <div class="key" @click="funcKeys">BACK</div>
-    <div class="key disabled">ENTER</div>
+    <div
+      class="key"
+      @click="funcKeys"
+      :disabled="funcKeysEnabled && !BackspaceEnabled"
+    >
+      BACK
+    </div>
+
+    <div class="key" @click="funcKeys" :disabled="funcKeysEnabled">ENTER</div>
   </div>
 </template>
 <script>
@@ -33,6 +40,8 @@ export default {
       buttonsDisabled: false,
       wordList: wordList,
       Word: "",
+      funcKeysEnabled: true,
+      BackspaceEnabled: false,
     };
   },
   methods: {
@@ -53,29 +62,51 @@ export default {
         this.position === 25
       ) {
         this.buttonsDisabled = true;
-        this.checkWord();
+        console.log("buttons disabled");
+      } else {
+        this.buttonsDisabled = false;
+        console.log("buttons enabled");
+      }
+
+      if (
+        this.position === 6 ||
+        this.position === 11 ||
+        this.position === 16 ||
+        this.position === 21 ||
+        this.position === 26
+      ) {
+        this.BackspaceEnabled = false;
+      } else if (this.position > 0) {
+        this.BackspaceEnabled = true;
+      } else {
+        this.BackspaceEnabled = false;
       }
     },
 
     checkWord() {
       this.Word = this.squares.slice(0, 5).join("");
+      if (this.Word.length < 5) {
+        return;
+      }
       console.log(this.Word);
 
       if (this.wordList.includes(this.Word.trim().toUpperCase())) {
         console.log("Word is in the list");
+        this.buttonsDisabled = false;
       } else {
         console.log("Word is not in the list");
       }
 
-      setTimeout(() => {
-        this.buttonsDisabled = false;
-      }, 1000);
+      this.buttonsDisabled = false;
     },
 
     funcKeys() {
       if (event.target.innerText == "BACK") {
         this.position--;
         this.squares[this.position] = "";
+        this.buttonsDisabled = false;
+      } else if (event.target.innerText == "ENTER") {
+        this.checkWord();
       }
     },
   },
