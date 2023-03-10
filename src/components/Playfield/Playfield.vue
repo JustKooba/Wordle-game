@@ -1,33 +1,37 @@
 <template>
-  <div class="board">
-    <div
-      class="square"
-      v-for="(square, index) in 30"
-      :key="index"
-      v-html="squares[index]"
-    ></div>
-  </div>
-  <div class="keyboard">
-    <button
-      class="key"
-      v-for="letter in alphabet"
-      :key="letter"
-      @click="keyPress(letter)"
-      :disabled="buttonsDisabled"
-    >
-      {{ letter }}
-    </button>
-    <button class="key" @click="funcKeys" :disabled="funcKeysDisabled">
-      BACK
-    </button>
+  <div class="content" :style="{ display: boardDisp }">
+    <div class="board">
+      <div
+        class="square"
+        v-for="(square, index) in 30"
+        :key="index"
+        v-html="squares[index]"
+      ></div>
+    </div>
+    <div class="keyboard">
+      <button
+        class="key"
+        v-for="letter in alphabet"
+        :key="letter"
+        @click="keyPress(letter)"
+        :disabled="buttonsDisabled"
+      >
+        {{ letter }}
+      </button>
+      <button class="key" @click="funcKeys" :disabled="funcKeysDisabled">
+        BACK
+      </button>
 
-    <button class="key" @click="funcKeys" :disabled="funcKeysDisabled">
-      ENTER
-    </button>
+      <button class="key" @click="funcKeys" :disabled="funcKeysDisabled">
+        ENTER
+      </button>
+    </div>
   </div>
+  <PlayAgain :style="{ display: playAgainDisp }" />
 </template>
 <script>
 import words from "../dataComponents/words.json";
+import PlayAgain from "../PlayAgain/PlayAgain.vue";
 const wordList = words.map((word) => word.toUpperCase());
 export default {
   data() {
@@ -41,7 +45,12 @@ export default {
       funcKeysDisabled: false,
       letters: "",
       randomWord: "",
+      playAgainDisp: "none",
+      boardDisp: "grid",
     };
+  },
+  components: {
+    PlayAgain,
   },
   methods: {
     keyPress(letter) {
@@ -111,7 +120,13 @@ export default {
         }
       }
 
-      this.buttonsDisabled = false;
+      if (this.Word == this.randomWord) {
+        console.log("Word is correct");
+        this.playAgainDisp = "flex";
+        this.boardDisp = "none";
+      } else {
+        console.log("Word is incorrect");
+      }
     },
 
     funcKeys() {
