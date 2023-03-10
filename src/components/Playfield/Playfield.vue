@@ -106,6 +106,9 @@ export default {
           console.log("Letters not found in word");
           return;
         }
+        if (this.randomWord.includes(this.letters[i])) {
+          console.log("Letters found in word");
+        }
       }
 
       this.buttonsDisabled = false;
@@ -125,9 +128,6 @@ export default {
     randomizeWord() {
       this.randomWord = this.wordList[Math.floor(Math.random() * 1000)];
       console.log(this.randomWord);
-
-      this.buttonsDisabled = true;
-      this.funcKeysDisabled = true;
     },
   },
   beforeMount() {
