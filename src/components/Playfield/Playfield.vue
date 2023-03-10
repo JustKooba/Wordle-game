@@ -39,7 +39,8 @@ export default {
       wordList: wordList,
       Word: "",
       funcKeysDisabled: false,
-      letters: [],
+      letters: "",
+      randomWord: "",
     };
   },
   methods: {
@@ -83,17 +84,28 @@ export default {
 
     checkWord() {
       this.Word = this.squares.slice(this.position - 5, this.position).join("");
-      this.letters = this.Word.slice(0, 5);
+      this.letters = this.squares.slice(this.position - 5, this.position);
       if (this.Word.length < 5) {
         return;
       }
       console.log(this.Word);
-
+      console.log(this.letters);
       if (this.wordList.includes(this.Word.trim().toUpperCase())) {
         console.log("Word is in the list");
         this.buttonsDisabled = false;
       } else {
         console.log("Word is not in the list");
+      }
+
+      for (let i = 0; i < this.letters.length; i++) {
+        if (
+          !this.squares
+            .slice(this.position - 5, this.position)
+            .includes(this.letters[i])
+        ) {
+          console.log("Letters not found in word");
+          return;
+        }
       }
 
       this.buttonsDisabled = false;
@@ -110,6 +122,16 @@ export default {
         this.checkWord();
       }
     },
+    randomizeWord() {
+      this.randomWord = this.wordList[Math.floor(Math.random() * 1000)];
+      console.log(this.randomWord);
+
+      this.buttonsDisabled = true;
+      this.funcKeysDisabled = true;
+    },
+  },
+  beforeMount() {
+    this.randomizeWord();
   },
 };
 </script>
