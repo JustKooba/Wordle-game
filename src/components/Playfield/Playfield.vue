@@ -39,12 +39,11 @@ export default {
       wordList: wordList,
       Word: "",
       funcKeysDisabled: false,
+      letters: [],
     };
   },
   methods: {
     keyPress(letter) {
-      console.log("key pressed: " + letter);
-      console.log("position: " + this.position);
       if (this.position < 30) {
         this.squares[this.position] = letter;
         this.position++;
@@ -76,10 +75,15 @@ export default {
       } else {
         this.funcKeysDisabled = false;
       }
+
+      if (this.position >= 25) {
+        this.buttonsDisabled = true;
+      }
     },
 
     checkWord() {
-      this.Word = this.squares.slice(0, 5).join("");
+      this.Word = this.squares.slice(this.position - 5, this.position).join("");
+      this.letters = this.Word.slice(0, 5);
       if (this.Word.length < 5) {
         return;
       }
