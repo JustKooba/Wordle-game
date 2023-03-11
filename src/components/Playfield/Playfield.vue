@@ -32,6 +32,8 @@
 <script>
 import words from "../dataComponents/words.json";
 import PlayAgain from "../PlayAgain/PlayAgain.vue";
+import "./style.scss";
+
 const wordList = words.map((word) => word.toUpperCase());
 export default {
   data() {
@@ -49,6 +51,7 @@ export default {
       boardDisp: "grid",
     };
   },
+
   components: {
     PlayAgain,
   },

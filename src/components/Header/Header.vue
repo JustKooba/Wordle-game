@@ -13,6 +13,7 @@
 
 <script>
 import htp from "../howtoplay/htp.vue";
+import "../../index.scss";
 export default {
   name: "HeaderMain",
   components: {

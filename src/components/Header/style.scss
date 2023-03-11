@@ -6,18 +6,15 @@ body {
   line-height: 1.5;
   color: #ffff;
   background-color: #121213;
-}
-
-h1 {
-  text-align: center;
-}
-
-.header {
-  border-bottom: 1px solid gray;
-  display: flex;
-  justify-content: space-between;
-}
-
-.header img {
-  cursor: pointer;
+  .header {
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    img {
+      cursor: pointer;
+    }
+  }
+  h1 {
+    text-align: center;
+  }
 }
