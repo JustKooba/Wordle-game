@@ -49,6 +49,7 @@ export default {
       randomWord: "",
       playAgainDisp: "none",
       boardDisp: "grid",
+      duplicatedLetters: [],
     };
   },
 
@@ -100,14 +101,18 @@ export default {
       if (this.Word.length < 5) {
         return;
       }
+      //compare wordArr and letters to find duplicate letters and console.log them
+      for (let i = 0; i < this.wordArr.length; i++) {
+        for (let j = 0; j < this.letters.length; j++) {
+          if (this.wordArr[i] == this.letters[j]) {
+            this.duplicatedLetters.push(this.letters[j]);
+          }
+        }
+      }
+
+      console.log(this.duplicatedLetters);
       console.log(this.Word);
       console.log(this.letters);
-      if (this.wordList.includes(this.Word.trim().toUpperCase())) {
-        console.log("Word is in the list");
-        this.buttonsDisabled = false;
-      } else {
-        console.log("Word is not in the list");
-      }
 
       for (let i = 0; i < this.letters.length; i++) {
         if (
@@ -130,6 +135,8 @@ export default {
       } else {
         console.log("Word is incorrect");
       }
+
+      this.buttonsDisabled = false;
     },
 
     funcKeys() {
@@ -145,6 +152,8 @@ export default {
     },
     randomizeWord() {
       this.randomWord = this.wordList[Math.floor(Math.random() * 1000)];
+      this.wordArr = this.randomWord.split("");
+      console.log(this.wordArr);
       console.log(this.randomWord);
     },
   },

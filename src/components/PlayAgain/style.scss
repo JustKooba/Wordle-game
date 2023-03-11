@@ -5,7 +5,7 @@
   align-items: center;
   height: 100vh;
 
-  button {
+  .play-again-btn {
     margin-top: 20px;
     padding: 10px 20px;
     border: none;
@@ -14,7 +14,7 @@
     color: white;
     font-size: 20px;
     cursor: pointer;
-    &hover {
+    &:hover {
       transition: ease-in-out 0.3s;
       transform: scale(1.1);
     }

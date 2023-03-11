@@ -17,6 +17,15 @@ $incorrect: #3a3a3c;
     display: flex;
     justify-content: center;
     align-items: center;
+    .guessed {
+      background-color: $wrong-place;
+      border: 1px solid $wrong-place;
+    }
+
+    .green {
+      background-color: $correct;
+      border: 1px solid $correct;
+    }
   }
 }
 
@@ -41,15 +50,6 @@ $incorrect: #3a3a3c;
     &:hover {
       transition: ease-in-out 0.3s;
       transform: scale(1.2);
-    }
-    .yellow {
-      background-color: $wrong-place;
-      border: 1px solid $wrong-place;
-    }
-
-    .green {
-      background-color: $correct;
-      border: 1px solid $correct;
     }
   }
 }
