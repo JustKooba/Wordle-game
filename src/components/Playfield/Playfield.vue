@@ -130,11 +130,6 @@ export default {
           console.log("Letters found in word");
         }
       }
-      for (let g = 0; g < this.$refs.sqr.length; g++) {
-        if (this.duplicatedLetters.includes(this.squares[g])) {
-          this.$refs.sqr[g].classList.add("yellow");
-        }
-      }
 
       if (this.Word == this.randomWord) {
         console.log("Word is correct");
@@ -151,8 +146,15 @@ export default {
       }
       for (let h = 0; h < this.wordArr.length; h++) {
         if (this.wordArr[h] == this.letters[h]) {
-          this.$refs.sqr[h].classList.remove("yellow");
           this.$refs.sqr[h].classList.add("green");
+        }
+      }
+      for (let g = 0; g < this.$refs.sqr.length; g++) {
+        if (this.duplicatedLetters.includes(this.squares[g])) {
+          this.$refs.sqr[g].classList.add("yellow");
+          if (this.$refs.sqr[g].classList.contains("green")) {
+            this.$refs.sqr[g].classList.remove("yellow");
+          }
         }
       }
 
