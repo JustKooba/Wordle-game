@@ -21,11 +21,14 @@ $incorrect: #3a3a3c;
       background-color: $wrong-place;
       border: 1px solid $wrong-place;
     }
+  }
 
-    .green {
-      background-color: $correct;
-      border: 1px solid $correct;
-    }
+  .green {
+    background-color: $correct;
+    border: 1px solid $correct;
+  }
+  .yellow {
+    background-color: #b59f3b !important;
   }
 }
 

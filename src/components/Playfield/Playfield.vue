@@ -5,7 +5,9 @@
         class="square"
         v-for="(square, index) in 30"
         :key="index"
+        :class="{ yellow: squares.includes(this.duplicatedLetters) }"
         v-html="squares[index]"
+        ref="sqr"
       ></div>
     </div>
     <div class="keyboard">
@@ -101,11 +103,12 @@ export default {
       if (this.Word.length < 5) {
         return;
       }
-      //compare wordArr and letters to find duplicate letters and console.log them
+
       for (let i = 0; i < this.wordArr.length; i++) {
         for (let j = 0; j < this.letters.length; j++) {
           if (this.wordArr[i] == this.letters[j]) {
             this.duplicatedLetters.push(this.letters[j]);
+            console.log(this.duplicatedLetters);
           }
         }
       }
@@ -125,6 +128,11 @@ export default {
         }
         if (this.randomWord.includes(this.letters[i])) {
           console.log("Letters found in word");
+        }
+      }
+      for (let g = 0; g < this.$refs.sqr.length; g++) {
+        if (this.duplicatedLetters.includes(this.squares[g])) {
+          this.$refs.sqr[g].classList.add("yellow");
         }
       }
 
@@ -155,6 +163,9 @@ export default {
       this.wordArr = this.randomWord.split("");
       console.log(this.wordArr);
       console.log(this.randomWord);
+    },
+    isDuplicated(letter) {
+      return this.duplicatedLetters.includes(letter);
     },
   },
   beforeMount() {
