@@ -144,10 +144,22 @@ export default {
         console.log("Word is incorrect");
       }
 
+      if (this.wordList.includes(this.Word.trim().toUpperCase())) {
+        this.buttonsDisabled = false;
+      } else {
+        return;
+      }
+      for (let h = 0; h < this.wordArr.length; h++) {
+        if (this.wordArr[h] == this.letters[h]) {
+          this.$refs.sqr[h].classList.remove("yellow");
+          this.$refs.sqr[h].classList.add("green");
+        }
+      }
+
       this.buttonsDisabled = false;
     },
 
-    funcKeys() {
+    funcKeys(event) {
       if (event.target.innerText == "BACK") {
         this.position--;
         this.squares[this.position] = "";

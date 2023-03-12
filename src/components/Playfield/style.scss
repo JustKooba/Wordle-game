@@ -17,16 +17,12 @@ $incorrect: #3a3a3c;
     display: flex;
     justify-content: center;
     align-items: center;
-    .guessed {
-      background-color: $wrong-place;
-      border: 1px solid $wrong-place;
-    }
   }
-
   .green {
-    background-color: $correct;
+    background-color: $correct !important;
     border: 1px solid $correct;
   }
+
   .yellow {
     background-color: #b59f3b !important;
   }
