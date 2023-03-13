@@ -29,7 +29,7 @@
       </button>
     </div>
   </div>
-  <PlayAgain :style="{ display: playAgainDisp }" />
+  <PlayAgain :style="{ display: playAgainDisp }" :result="winState" />
 </template>
 <script>
 import words from "../dataComponents/words.json";
