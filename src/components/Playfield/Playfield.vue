@@ -52,6 +52,7 @@ export default {
       playAgainDisp: "none",
       boardDisp: "grid",
       duplicatedLetters: [],
+      winState: "Lose",
     };
   },
 
@@ -78,18 +79,6 @@ export default {
       } else {
         this.buttonsDisabled = false;
         console.log("buttons enabled");
-      }
-
-      if (
-        this.position === 6 ||
-        this.position === 11 ||
-        this.position === 16 ||
-        this.position === 21 ||
-        this.position === 26
-      ) {
-        this.funcKeysDisabled = true;
-      } else {
-        this.funcKeysDisabled = false;
       }
 
       if (this.position >= 25) {
@@ -135,6 +124,7 @@ export default {
         console.log("Word is correct");
         this.playAgainDisp = "flex";
         this.boardDisp = "none";
+        this.winState = "Win";
       } else {
         console.log("Word is incorrect");
       }
